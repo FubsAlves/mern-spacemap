@@ -2,7 +2,7 @@ const router = require('express').Router();
 let Constelacao = require('../models/constelacao.model');
 
 router.route('/').get((req, res) => {
-  Constelacao.find()
+  Constelacao.find().populate('estrela_principal')
     .then(constelacoes => res.json(constelacoes))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -24,31 +24,31 @@ router.route('/add').post((req, res) => {
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// router.route('/:id').get((req, res) => {
-//   Exercise.findById(req.params.id)
-//     .then(exercise => res.json(exercise))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+router.route('/:id').get((req, res) => {
+  Constelacao.findById(req.params.id).populate('estrela_principal')
+    .then(constelacao => res.json(constelacao))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
-// router.route('/:id').delete((req, res) => {
-//   Exercise.findByIdAndDelete(req.params.id)
-//     .then(() => res.json('Exercise deleted.'))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+router.route('/:id').delete((req, res) => {
+  Constelacao.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Constelação deletada!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
-// router.route('/update/:id').post((req, res) => {
-//   Exercise.findById(req.params.id)
-//     .then(exercise => {
-//       exercise.username = req.body.username;
-//       exercise.description = req.body.description;
-//       exercise.duration = Number(req.body.duration);
-//       exercise.date = Date.parse(req.body.date);
+router.route('/update/:id').post((req, res) => {
+  Constelacao.findById(req.params.id)
+    .then(constelacao => {
+      constelacao.nome = req.body.nome;
+      constelacao.descricao = req.body.descricao;
+      constelacao.estrela_principal = req.body.estrela_principal;
+      
 
-//       exercise.save()
-//         .then(() => res.json('Exercise updated!'))
-//         .catch(err => res.status(400).json('Error: ' + err));
-//     })
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+      constelacao.save()
+        .then(() => res.json('Constelação atualizada!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 module.exports = router;
