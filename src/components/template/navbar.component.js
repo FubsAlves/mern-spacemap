@@ -24,23 +24,23 @@ render() {
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav middle="true">
             <MDBNavItem>
-              <MDBNavLink to="/">Constelações</MDBNavLink>
+              <MDBNavLink to="/constelacoes">Constelações</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Galáxias</MDBNavLink>
-            </MDBNavItem>
-          </MDBNavbarNav>
-          <MDBNavbarNav middle="true">
-            <MDBNavItem>
-              <MDBNavLink to="#!"><img src={blackhole} className="logo" alt=""/></MDBNavLink>
+              <MDBNavLink to="/galaxias">Galáxias</MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav middle="true">
             <MDBNavItem>
-              <MDBNavLink to="#!">Estrelas</MDBNavLink>
+              <MDBNavLink to="/"><img src={blackhole} className="logo" alt=""/></MDBNavLink>
+            </MDBNavItem>
+          </MDBNavbarNav>
+          <MDBNavbarNav middle="true">
+            <MDBNavItem>
+              <MDBNavLink to="/estrelas">Estrelas</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Nebulosas</MDBNavLink>
+              <MDBNavLink to="/nebulosas">Nebulosas</MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>
         </MDBCollapse>

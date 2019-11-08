@@ -2,9 +2,12 @@ const router = require('express').Router();
 let Constelacao = require('../models/constelacao.model');
 
 router.route('/').get((req, res) => {
-  Constelacao.find().populate('estrela_principal')
+  
+  
+  Constelacao.find().populate('estrela_principal' , 'nome -_id')
     .then(constelacoes => res.json(constelacoes))
     .catch(err => res.status(400).json('Error: ' + err));
+    
 });
 
 router.route('/add').post((req, res) => {
