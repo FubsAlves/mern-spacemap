@@ -32,7 +32,7 @@ export default class ConstelacoesList extends Component {
     axios.get('http://localhost:5000/constelacoes/')
       .then(response => {    
         
-        response.data.forEach((constelacao, key) => {
+        response.data.map((constelacao, key) => {
             if(response.data[key].estrela_principal)
             response.data[key].estrela_principal = constelacao.estrela_principal.nome
             else{
@@ -70,10 +70,10 @@ export default class ConstelacoesList extends Component {
         <MDBCard>
           <MDBCardBody>
             
-              <MDBCardTitle><MDBRow><h3>Lista de Constelações</h3> <Link className='btn btn-primary' to='/constelacoes/create'>Adicionar Constelação</Link></MDBRow></MDBCardTitle>
+              <MDBCardTitle><MDBRow className="d-flex align-items-center justify-content-between mx-1"><h3>Lista de Constelações</h3> <Link className='btn btn-primary' to='/constelacoes/create'>Adicionar Constelação</Link></MDBRow></MDBCardTitle>
             
               <MDBTable bordered>
-                <MDBTableHead color='purple' textWhite>
+                <MDBTableHead color='purple text-center' textWhite>
                   <tr>
                     <th>Nome</th>
                     <th>Descrição</th>

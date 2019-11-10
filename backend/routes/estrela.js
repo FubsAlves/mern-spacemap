@@ -3,7 +3,7 @@ let Estrela = require('../models/estrela.model').Estrela;
 
 
 router.route('/').get((req, res) => {
-  Estrela.find().populate('constelacao').populate('classificacao')
+  Estrela.find().populate('constelacao', 'nome -_id').populate('classificacao', 'classificacao -_id')
     .then(estrelas => res.json(estrelas))
     .catch(err => res.status(400).json('Error: ' + err));
 });
