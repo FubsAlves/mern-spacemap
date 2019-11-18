@@ -36,7 +36,7 @@ const CardGalaxy = () => {
             Some quick example text to build on the card title and make
             up the bulk of the card&apos;s content.
           </MDBCardText>
-          <Link to='/galaxias'><MDBBtn>Galáxias</MDBBtn></Link>
+            <Link to='/galaxias'><MDBBtn >Galáxias</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
     </MDBCol>
@@ -54,9 +54,7 @@ const CardStar = () => {
             Some quick example text to build on the card title and make
             up the bulk of the card&apos;s content.
           </MDBCardText>
-          <div class>
-            <Link to='/estrelas'><MDBBtn className="align-self-end">Estrelas</MDBBtn></Link>
-          </div>
+            <Link to='/estrelas'><MDBBtn>Estrelas</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
     </MDBCol>
