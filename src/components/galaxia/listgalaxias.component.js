@@ -12,14 +12,9 @@ const Galaxia = props => (
     <td>{props.galaxia.distancia}</td>
     <td>{props.galaxia.numero_estrelas}</td>
     <td>{props.galaxia.constelacao}</td>
-    <td>{props.galaxia.tipo}</td>
-    
-    
-    
-    
-    
+    <td>{props.galaxia.tipo}</td>    
     <td className='text-center'>
-      <Link className='btn btn-warning' to={"/edit/"+props.galaxia._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteGalaxia(props.galaxia._id) }}>Deletar</Link>
+      <Link className='btn btn-warning' to={"galaxias/edit/"+props.galaxia._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteGalaxia(props.galaxia._id) }}>Deletar</Link>
     </td>
   </tr>
 )
@@ -39,15 +34,14 @@ export default class GalaxiasList extends Component {
   //  this.setState({constelacoes: response.data})
     axios.get('http://localhost:5000/galaxias/')
       .then(response => {    
-        
+        console.log(response.data)
         response.data.map((galaxia, key) => {
             
                 response.data[key].constelacao = galaxia.constelacao.nome
                 response.data[key].tipo = galaxia.tipo.tipo
         
-            
         });
-        console.log(response.data)
+        
         this.setState({galaxias: response.data})
         
       })

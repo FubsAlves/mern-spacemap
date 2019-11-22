@@ -19,7 +19,7 @@ const Estrela = props => (
     
     
     <td className='text-center'>
-      <Link className='btn btn-warning' to={"/edit/"+props.estrela._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteEstrela(props.estrela._id) }}>Deletar</Link>
+      <Link className='btn btn-warning' to={"estrelas/edit/"+props.estrela._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteEstrela(props.estrela._id) }}>Deletar</Link>
     </td>
   </tr>
 )
@@ -62,7 +62,7 @@ export default class EstrelasList extends Component {
       .then(response => { console.log(response.data)});
 
     this.setState({
-      constelacoes: this.state.constelacoes.filter(el => el._id !== id)
+      estrelas: this.state.estrelas.filter(el => el._id !== id)
       
     })
   }

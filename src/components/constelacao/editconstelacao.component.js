@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
 import axios from 'axios';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from "mdbreact";
 
-export default class CreateConstelacao extends Component {
+export default class EditConstelacao extends Component {
   constructor(props) {
     super(props);
 
@@ -16,20 +15,36 @@ export default class CreateConstelacao extends Component {
       nome: '',
       descricao: '',
       estrela_principal : '',
-      estrelas : [],
-      
+      estrelas: []
     }
   }
 
-
   componentDidMount() {
+    axios.get('http://localhost:5000/constelacoes/'+this.props.match.params.id)
+      .then(response => {
+        
+        this.setState({
+          nome: response.data.nome,
+          descricao: response.data.descricao,
+          
+        })
+        if(response.data.estrela_principal){
+          this.setState({
+            estrela_principal: response.data.estrela_principal._id,
+          })
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
     axios.get('http://localhost:5000/estrelas/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
+            //users: response.data.map(user => user.username),
             estrelas: response.data
-            
-          });
+          })
         }
       })
       .catch((error) => {
@@ -43,59 +58,46 @@ export default class CreateConstelacao extends Component {
       nome: e.target.value
     })
   }
+
   onChangeDescricao(e) {
     this.setState({
       descricao: e.target.value
     })
   }
-  
+
   onChangeEstrelaPrincipal(e) {
     this.setState({
       estrela_principal: e.target.value
     })
   }
 
+
   onSubmit(e) {
     e.preventDefault();
-    
 
     const constelacao = {
       nome: this.state.nome,
-      descricao: this.state.descricao,  
+      descricao: this.state.descricao,
+      estrela_principal: this.state.estrela_principal
+      
     }
 
-    if(this.state.estrela_principal != ''){
-      constelacao.estrela_principal = this.state.estrela_principal
-    }
-    
 
-    
-
-    axios.post('http://localhost:5000/constelacoes/add', constelacao)
+    axios.post('http://localhost:5000/constelacoes/update/' + this.props.match.params.id, constelacao)
       .then(res => console.log(res.data));
 
-     
-
-    this.setState({
-      nome: '',
-      descricao : '',
-      estrela_principal : ''
-    })
-
-    return  <Redirect  to="/constelacoes/" />
-
+    
   }
 
   render() {
     return (
-      
       <MDBContainer className="my-4">
       <MDBRow>
         <MDBCol md="12">
           <MDBCard>
             <MDBCardBody>
               <form onSubmit={this.onSubmit}>
-                <h3 className="h4 text-center py-4">Adicionar Constelação</h3>
+                <h3 className="h4 text-center py-4">Editar Constelação {this.state.nome}</h3>
                 <div className="gray-text">
                   <MDBInput
                     label="Constelação"
@@ -117,7 +119,7 @@ export default class CreateConstelacao extends Component {
                       this.state.estrelas.map(function(estrelas) {
                         return <option 
                           key={estrelas._id}
-                          value={estrelas._id}>{estrelas.nome}
+                          value={estrelas._id} >{estrelas.nome}
                           </option>;
                       })
                     } 
@@ -125,7 +127,7 @@ export default class CreateConstelacao extends Component {
                 </div>
                 <div className="text-center py-4 mt-3">
                   <MDBBtn color="green" type="submit" onClick={this.onSubmit}>
-                      Cadastrar
+                      Alterar
                   </MDBBtn>
                 </div>
               </form>
@@ -134,7 +136,6 @@ export default class CreateConstelacao extends Component {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
-      
     )
   }
 }

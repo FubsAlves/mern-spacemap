@@ -7,6 +7,9 @@ import CreateConstelacao from './components/constelacao/createconstelacao.compon
 import CreateGalaxia from './components/galaxia/creategalaxia.component';
 import CreateEstrela from './components/estrela/createestrela.component';
 import CreateNebulosa from './components/nebulosa/createnebulosa.component';
+import EditConstelacao from './components/constelacao/editconstelacao.component';
+import EditGalaxia from './components/galaxia/editgalaxia.component';
+import EditEstrela from './components/estrela/editestrela.component';
 //import ExercisesList from "./components/exercises-list.component";
 import Index from "./components/index.component";
 import EditExercise from "./components/edit-exercise.component";
@@ -27,6 +30,9 @@ function App() {
       <Navbar/>
       <Route path="/user/create" exact component={CreateUser} />
       <Route path="/constelacoes/create" exact component={CreateConstelacao} />
+      <Route path="/constelacoes/edit/:id" exact component={EditConstelacao}/>
+      <Route path="/galaxias/edit/:id" exact component={EditGalaxia}/>
+      <Route path="/estrelas/edit/:id" exact component={EditEstrela}/>
       <Route path="/galaxias/create" exact component={CreateGalaxia} />
       <Route path ="/estrelas/create" exact component={CreateEstrela} />
       <Route path="/nebulosas/create" exact component={CreateNebulosa} />

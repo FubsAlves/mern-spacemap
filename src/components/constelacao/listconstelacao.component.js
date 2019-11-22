@@ -11,7 +11,7 @@ const Constelacao = props => (
     
     
     <td className='text-center'>
-      <Link className='btn btn-warning' to={"/edit/"+props.constelacao._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteConstelacao(props.constelacao._id) }}>Deletar</Link>
+      <Link className='btn btn-warning' to={"/constelacoes/edit/"+props.constelacao._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteConstelacao(props.constelacao._id) }}>Deletar</Link>
     </td>
   </tr>
 )
