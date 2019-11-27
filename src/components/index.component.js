@@ -13,11 +13,9 @@ const CardNebula = () => {
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={nebula} waves />
         <MDBCardBody>
-          <MDBCardTitle>Card title</MDBCardTitle>
-          <MDBCardText>
-            Some quick example text to build on the card title and make
-            up the bulk of the card&apos;s content.
-          </MDBCardText>
+
+           
+          
           <Link to='/nebulosas'><MDBBtn>Nebulosas</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
@@ -31,11 +29,6 @@ const CardGalaxy = () => {
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={galaxy} waves />
         <MDBCardBody>
-          <MDBCardTitle>Card title</MDBCardTitle>
-          <MDBCardText>
-            Some quick example text to build on the card title and make
-            up the bulk of the card&apos;s content.
-          </MDBCardText>
             <Link to='/galaxias'><MDBBtn >Galáxias</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
@@ -49,11 +42,7 @@ const CardStar = () => {
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={star} waves />
         <MDBCardBody>
-          <MDBCardTitle>Card title</MDBCardTitle>
-          <MDBCardText>
-            Some quick example text to build on the card title and make
-            up the bulk of the card&apos;s content.
-          </MDBCardText>
+         
             <Link to='/estrelas'><MDBBtn>Estrelas</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
@@ -67,11 +56,6 @@ const CardConstellation = () => {
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={constellation} waves />
         <MDBCardBody>
-          <MDBCardTitle>Card title</MDBCardTitle>
-          <MDBCardText>
-            Some quick example text to build on the card title and make
-            up the bulk of the card&apos;s content.
-          </MDBCardText>
           <Link to='/constelacoes'><MDBBtn>Constelações</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
