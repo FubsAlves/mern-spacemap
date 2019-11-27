@@ -14,7 +14,7 @@ const Nebulosa = props => (
     
     
     <td className='text-center'>
-      <Link className='btn btn-warning' to={"/edit/"+props.nebulosa._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteNebulosa(props.nebulosa._id) }}>Deletar</Link>
+      <Link className='btn btn-warning' to={"nebulosas/edit/"+props.nebulosa._id}>Editar</Link> <Link className="btn btn-danger" onClick={() => { props.deleteNebulosa(props.nebulosa._id) }}>Deletar</Link>
     </td>
   </tr>
 )

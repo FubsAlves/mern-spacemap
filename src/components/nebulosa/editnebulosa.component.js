@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from "react-router-dom";
 import axios from 'axios';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from "mdbreact";
 
-export default class CreateEstrela extends Component {
+export default class EditEstrela extends Component {
   constructor(props) {
     super(props);
 
-         
-          
     this.onChangeNome = this.onChangeNome.bind(this);
     this.onChangeDescricao = this.onChangeDescricao.bind(this);
     this.onChangeMagnitude = this.onChangeMagnitude.bind(this);
@@ -18,42 +15,60 @@ export default class CreateEstrela extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      nome: '',
-      descricao: '',
-      magnitude : '',
-      tamanho : '',
-      distancia : '',
-      constelacao : '',
-      classificacao : '',
-      constelacoes : [],
-      classificacoes : []
-      
-    }
+        nome: '',
+        descricao: '',
+        magnitude : '',
+        tamanho : '',
+        distancia : '',
+        constelacao : '',
+        classificacao : '',
+        constelacoes : [],
+        classificacoes : []
+        
+      }
   }
 
-
   componentDidMount() {
+    axios.get('http://localhost:5000/nebulosas/'+this.props.match.params.id)
+      .then(response => {
+        
+        this.setState({
+            nome : response.data.nome,
+            descricao : response.data.descricao,
+            magnitude : response.data.magnitude,
+            tamanho : response.data.tamanho,
+            distancia : response.data.distancia,
+            constelacao : response.data.constelacao._id,
+            classificacao : response.data.classificacao._id
+          
+        })
+        console.log(this.state)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
     axios.get('http://localhost:5000/constelacoes/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
+            //users: response.data.map(user => user.username),
             constelacoes: response.data
-          });
+          })
         }
       })
       .catch((error) => {
         console.log(error);
       })
 
-      axios.get('http://localhost:5000/classificacoes/nebulosa')
+      axios.get('http://localhost:5000//classificacoes/nebulosa')
       .then(response => {
-            
         if (response.data.length > 0) {
           this.setState({
+            //users: response.data.map(user => user.username),
             classificacoes: response.data
-          });
+          })
         }
-        
       })
       .catch((error) => {
         console.log(error);
@@ -91,7 +106,8 @@ export default class CreateEstrela extends Component {
       classificacao: e.target.value
     })
   }
-  
+
+
   onSubmit(e) {
     e.preventDefault();
     
@@ -103,36 +119,22 @@ export default class CreateEstrela extends Component {
         distancia : this.state.distancia,
         constelacao : this.state.constelacao,
         classificacao : this.state.classificacao
-    } 
+    }
 
-    axios.post('http://localhost:5000/nebulosas/add', nebulosa)
+    axios.post('http://localhost:5000/nebulosas/update/' + this.props.match.params.id, nebulosa)
       .then(res => console.log(res.data));
-
-     
-
-    this.setState({
-        nome: '',
-        descricao: '',
-        magnitude : '',
-        distancia : '',
-        constelacao : '',
-        classificacao : '',
-    })
-
-    
 
   }
 
   render() {
     return (
-      
-      <MDBContainer className="my-4">
+        <MDBContainer className="my-4">
       <MDBRow>
         <MDBCol md="12">
           <MDBCard>
             <MDBCardBody>
               <form onSubmit={this.onSubmit}>
-                <h3 className="h4 text-center py-4">Adicionar Nebulosa</h3>
+                <h3 className="h4 text-center py-4">Editar Nebulosa {this.state.nome}</h3>
                 <div className="gray-text">
                   <MDBInput
                     label="Nebulosa"
@@ -186,7 +188,7 @@ export default class CreateEstrela extends Component {
                 </div>
                 <div className="text-center py-4 mt-3">
                   <MDBBtn color="green" type="submit" onClick={this.onSubmit}>
-                      Cadastrar
+                      Alterar
                   </MDBBtn>
                 </div>
               </form>
@@ -195,7 +197,6 @@ export default class CreateEstrela extends Component {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
-      
     )
   }
 }
