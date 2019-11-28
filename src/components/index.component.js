@@ -12,8 +12,8 @@ const CardNebula = () => {
     <MDBCol>
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={nebula} waves />
-        <MDBCardBody>
-
+        <MDBCardBody className="d-flex align-items-end justify-content-center">
+        
            
           
           <Link to='/nebulosas'><MDBBtn>Nebulosas</MDBBtn></Link>
@@ -28,7 +28,7 @@ const CardGalaxy = () => {
     <MDBCol>
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={galaxy} waves />
-        <MDBCardBody>
+        <MDBCardBody className="d-flex align-items-end justify-content-center">
             <Link to='/galaxias'><MDBBtn >Galáxias</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
@@ -41,7 +41,7 @@ const CardStar = () => {
     <MDBCol>
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={star} waves />
-        <MDBCardBody>
+        <MDBCardBody className="d-flex align-items-end justify-content-center">
          
             <Link to='/estrelas'><MDBBtn>Estrelas</MDBBtn></Link>
         </MDBCardBody>
@@ -55,7 +55,7 @@ const CardConstellation = () => {
     <MDBCol>
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={constellation} waves />
-        <MDBCardBody>
+        <MDBCardBody className="d-flex align-items-end justify-content-center">
           <Link to='/constelacoes'><MDBBtn>Constelações</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
