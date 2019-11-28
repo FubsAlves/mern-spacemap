@@ -13,9 +13,6 @@ const CardNebula = () => {
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={nebula} waves />
         <MDBCardBody className="d-flex align-items-end justify-content-center">
-        
-           
-          
           <Link to='/nebulosas'><MDBBtn>Nebulosas</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
@@ -42,7 +39,6 @@ const CardStar = () => {
       <MDBCard style={{ width: "22rem" }}>
         <MDBCardImage className="img-fluid" src={star} waves />
         <MDBCardBody className="d-flex align-items-end justify-content-center">
-         
             <Link to='/estrelas'><MDBBtn>Estrelas</MDBBtn></Link>
         </MDBCardBody>
       </MDBCard>
@@ -76,10 +72,7 @@ export default class Index extends Component {
               <MDBCol size="6" className="d-flex"><CardStar/></MDBCol>
               <MDBCol size="6" className="d-flex"><CardNebula/></MDBCol>
           </MDBRow>
-      </MDBContainer>
-          
-          
-        
+      </MDBContainer> 
     )
   }
 }
